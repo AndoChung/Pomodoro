@@ -9,7 +9,6 @@ app.get("/", (req, res) => {
     res.send("I Love Gloria");
 })
 
-
 mongoose
     .connect(mongoDBURL)
     .then(() => {
