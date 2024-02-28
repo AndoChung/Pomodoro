@@ -16,13 +16,13 @@ app.post("/user", async (req, res) => {
         if (!req.body.email || !req.body.password || !req.body.name) {
             return res.status(400).send({
             message: 'Send all required fields: email, password, name'
-        })
-    }
+            })
+        }
         const newUser = {
             email: req.body.email,
             password: req.body.password,
             name: req.body.name
-    };
+        };
         const user = await User.create(newUser);
         return res.status(201).send(user);
     } catch (error) {
@@ -40,7 +40,7 @@ app.get("/user", async (req, res) => {
 
     } catch (error) {
         console.log(error.message);
-        res.status(500).send({message: error.message})
+        res.status(500).send({message: error.message});
     }
 })
 
@@ -48,7 +48,7 @@ app.get("/user", async (req, res) => {
 // find a single user by id
 app.get("/user/:id" , async (req, res) => {
     try {
-        const { id } = req.params
+        const { id } = req.params;
 
         const user = await User.findById(id);
 
@@ -56,13 +56,35 @@ app.get("/user/:id" , async (req, res) => {
 
     } catch (error) {
         console.log(error.message);
-        res.status(500).send({message: error.message})
+        res.status(500).send({message: error.message});
+    }
+})
+
+// Update a single user
+app.put("/user/:id", async (req, res) => {
+    try {
+        if (!req.body.email || !req.body.password || !req.body.name) {
+            return res.status(400).send({
+            message: 'Send all required fields: email, password, name'
+            })
+        }
+        const { id } = req.params;
+
+        const result = await User.findByIdAndUpdate(id, req.body);
+
+        if (!result) {
+            return res.status(404).json({ message: "Book not found"});
+        }
+
+        return res.status(200).send({ message: "Book updated successfully" });
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({ message: error.message});
     }
 })
 
 
 app.get("/", (req, res) => {
-    console.log(req);
     res.status(223).send("I Love Gloria");
 })
 
