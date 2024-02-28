@@ -8,6 +8,9 @@ const app = express();
 
 app.use(express.json());
 
+
+
+// create a new user
 app.post("/user", async (req, res) => {
     try {
         if (!req.body.email || !req.body.password || !req.body.name) {
@@ -28,6 +31,7 @@ app.post("/user", async (req, res) => {
     }
 }) 
 
+// find all users
 app.get("/user", async (req, res) => {
     try {
         const users = await User.find({});
@@ -39,6 +43,23 @@ app.get("/user", async (req, res) => {
         res.status(500).send({message: error.message})
     }
 })
+
+
+// find a single user by id
+app.get("/user/:id" , async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const user = await User.findById(id);
+
+        return res.status(200).json(user);
+
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send({message: error.message})
+    }
+})
+
 
 app.get("/", (req, res) => {
     console.log(req);
