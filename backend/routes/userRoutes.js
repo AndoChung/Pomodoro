@@ -1,5 +1,6 @@
 import express from 'express';
 import { User } from "../models/userModel.js";
+import bcrypt from "bcrypt";
 
 const router = express.Router();
 
@@ -8,14 +9,16 @@ const router = express.Router();
 // create a new user
 router.post("/", async (req, res) => {
     try {
-        if (!req.body.email || !req.body.password || !req.body.name) {
+        if (!req.body.password || !req.body.name) {
             return res.status(400).send({
-            message: 'Send all required fields: email, password, name'
+            message: 'Send all required fields: username, password'
             })
         }
+
+        const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
         const newUser = {
-            email: req.body.email,
-            password: req.body.password,
+            password: hashedPassword,
             name: req.body.name
         };
         const user = await User.create(newUser);
@@ -57,9 +60,9 @@ router.get("/:id" , async (req, res) => {
 // Update a single user
 router.put("/:id", async (req, res) => {
     try {
-        if (!req.body.email || !req.body.password || !req.body.name || !req.body.goals) {
+        if (!req.body.password || !req.body.name || !req.body.goals) {
             return res.status(400).send({
-            message: 'Send all required fields: email, password, name,'
+            message: 'Send all required fields: username, password, goals'
             })
         }
         const { id } = req.params;

@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const userSchema = mongoose.Schema(
     {
-        email: {
+        name: {
             type: String,
             required: true,
         },
@@ -10,12 +10,8 @@ const userSchema = mongoose.Schema(
             type: String,
             required:true,
         },
-        name: {
-            type: String,
-            required: true,
-        },
         goals: {
-            type: [Number],
+            type: [Object],
             default: undefined,
         }
     }
