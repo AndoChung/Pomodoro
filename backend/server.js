@@ -1,10 +1,17 @@
 import express from "express";
+import cors from "cors";
 import { PORT, mongoDBURL} from "./config.js";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes.js"
 
 
 const app = express();
+
+app.use(cors({
+    origin: 'http://localhost:5173',
+    methods: ['GET','POST','PUT','DELETE'],
+    allowedHeaders: ['Content-Type']
+}))
 
 app.use(express.json());
 
