@@ -29,6 +29,25 @@ router.post("/", async (req, res) => {
     }
 }) 
 
+// login user route
+router.post("/login", async (req, res) => {
+    const user = await User.findOne({ name: req.body.name})
+    if (user == null) {
+        return res.status(400).send("Cannot Find User")
+    }
+    console.log(user);
+    try {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            res.send("Success")
+        } else {
+            res.send("Not Allowed")
+        }
+    } catch (error) {
+
+    }
+})
+
+
 // find all users
 router.get("/", async (req, res) => {
     try {

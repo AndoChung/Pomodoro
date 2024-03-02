@@ -3,7 +3,6 @@ import cors from "cors";
 import { PORT, mongoDBURL} from "./config.js";
 import mongoose from "mongoose";
 import userRoutes from "./routes/userRoutes.js"
-import bcrypt from "bcrypt";
 
 
 const app = express();
