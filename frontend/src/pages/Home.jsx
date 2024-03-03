@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import ToDoList from '../components/ToDoList/ToDoList'
+import Timer from '../components/Timer/Timer'
 import axios from 'axios';
 
 const Home = () => {
@@ -15,8 +16,11 @@ const Home = () => {
       })
   }, [])
   return (
-    <div>
+    <div className='h-screen'>
+      <div className='flex h-5/6'>
         <ToDoList />
+        <Timer />
+      </div>
     </div>
   )
 }
