@@ -4,6 +4,20 @@ import axios from 'axios';
 
 
 const ToDoList = () => {
+  const [goals, setGoals] = useState([]);
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/user')
+      .then((res) => {
+        console.log(res)
+        setGoals(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }, [])
+
+
   return (
     <div className='w-1/3 overflow-y-scroll border border-gray-800 m-2'>
       <div className=''>
