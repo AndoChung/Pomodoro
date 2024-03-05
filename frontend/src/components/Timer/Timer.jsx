@@ -2,19 +2,21 @@ import {React, useState, useEffect} from 'react'
 import moment from "moment"
 
 
-const Timer = ({ duration }) => {
-    const durationNum = Number(duration)
-    let diff = moment.duration(durationNum * 1000, "millisecond")
-    
-    const [display, setDisplay] = useState(moment(diff.asMilliseconds()).format('h:mm:ss'))
+const Timer = ({ amountOfTime }) => {
+    const durationNum = Number(amountOfTime)
+    let duration = moment.duration(durationNum, "minutes")
+    const [display, setDisplay] = useState(moment.utc(duration.as("milliseconds")).format("HH:mm:ss"))
 
     useEffect(() => {
-        setInterval(() => {
-            diff = moment.duration(diff.asMilliseconds() - 1000, "millisecond")
-            setDisplay(moment(diff.asMilliseconds()).format('h:mm:ss'))
+        let interval = setInterval(() => {
+            duration.subtract(1000, "milliseconds");
+            setDisplay(moment.utc(duration.as("milliseconds")).format("HH:mm:ss"));
         }, 1000)
-        
-    }, [display])
+        return () => {
+            clearInterval(interval);
+        }
+    }, [])
+
     return (
         <div>
             <div>{display}</div>

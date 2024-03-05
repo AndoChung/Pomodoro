@@ -19,7 +19,7 @@ const Home = () => {
     <div className='h-screen'>
       <div className='flex h-5/6'>
         <ToDoList />
-        <Timer duration="25" />
+        <Timer amountOfTime="25" />
       </div>
     </div>
   )

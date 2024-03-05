@@ -9,7 +9,6 @@ const ToDoList = () => {
     axios
       .get('http://localhost:3001/user')
       .then((res) => {
-        console.log(res)
         setGoals(res);
       })
       .catch((error) => {
