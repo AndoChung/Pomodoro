@@ -1,6 +1,8 @@
 import express from 'express';
 import { User } from "../models/userModel.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import { JWTSecret } from '../config.js';
 
 const router = express.Router();
 
@@ -22,31 +24,21 @@ router.post("/", async (req, res) => {
             name: req.body.name
         };
         const user = await User.create(newUser);
+
+        const token = jwt.sign({ user: user._id}, JWTSecret);
+
+        res
+            .cookie("token", token, {
+                httpOnly: true,
+            })
+            .send() 
+
         return res.status(201).send(user);
     } catch (error) {
         console.log(error.message);
         res.status(500).send({ messsge: error.message })
     }
 }) 
-
-// login user route
-router.post("/login", async (req, res) => {
-    const user = await User.findOne({ name: req.body.name})
-    if (user == null) {
-        return res.status(400).send("Cannot Find User")
-    }
-    console.log(user);
-    try {
-        if (await bcrypt.compare(req.body.password, user.password)) {
-            res.send("Success")
-        } else {
-            res.send("Not Allowed")
-        }
-    } catch (error) {
-
-    }
-})
-
 
 // find all users
 router.get("/", async (req, res) => {
@@ -107,14 +99,16 @@ router.delete("/:id", async (req, res) => {
         const result = await User.findByIdAndDelete(id);
 
         if (!result) {
-            return res.status(404).json({ message: "Book not found"});
+            return res.status(404).json({ message: "User not found"});
         }
 
-        return res.status(200).send({ message: "Book deleted successfully" });
+        return res.status(200).send({ message: "User deleted successfully" });
     } catch (error) {
         console.log(error.message);
         res.status(500).send({ message: error.message });
     }
 })
+
+
 
 export default router;
