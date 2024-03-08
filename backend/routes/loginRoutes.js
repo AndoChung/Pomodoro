@@ -12,9 +12,17 @@ router.post("/", async (req, res) => {
     }
     console.log(user);
     try {
+
+        const token = jwt.sign({ user: user._id}, JWTSecret);
+
+        res
+            .cookie("token", token, {
+                httpOnly: true,
+            })
+            .send() 
+
         if (await bcrypt.compare(req.body.password, user.password)) {
             res.send("Success")
-            // res.redirect("http://localhost:5173")
         } else {
             res.send("Not Allowed")
         }
