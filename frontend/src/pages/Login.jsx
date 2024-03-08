@@ -4,9 +4,9 @@ const Login = () => {
   return (
     <div className='h-screen'>
       <div className='flex justify-center h-5/6'>
-        <form className='flex flex-col justify-center items-center w-1/4'>
+        <form action='http://localhost:3001/login' method='POST' className='flex flex-col justify-center items-center w-1/4'>
           <div className='h-1/2 border flex flex-col justify-center items-center w-full'>
-            <label htmlFor="username">Username</label>
+            <label htmlFor="name">Username</label>
             <input type='text' className='w-5/6' />
             <label htmlFor="password">Password</label>
             <input type='text' className='w-5/6' />
