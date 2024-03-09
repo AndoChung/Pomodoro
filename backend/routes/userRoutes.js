@@ -3,10 +3,9 @@ import { User } from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { JWTSecret } from '../config.js';
+import auth from "../middleware/auth.js";
 
 const router = express.Router();
-
-
 
 // create a new user
 router.post("/", async (req, res) => {
@@ -77,7 +76,6 @@ router.get("/logout", (req, res) => {
         })
         .send();
 })
-
 
 // find all users
 router.get("/", async (req, res) => {
