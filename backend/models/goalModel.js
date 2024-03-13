@@ -3,13 +3,14 @@ import mongoose from "mongoose";
 const goalSchema = mongoose.Schema(
     {
         creator: {
-            type: String
+            type: String,
+            required: true
         },
-        message: {
+        task: {
             type: String,
             required:true,
         },
     }
 );
 
-export const Goal = mongoose.model("User", goalSchema);
+export const Goal = mongoose.model("Goal", goalSchema);
