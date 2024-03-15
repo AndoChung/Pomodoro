@@ -2,14 +2,15 @@ import mongoose from "mongoose";
 
 const goalSchema = mongoose.Schema(
     {
-        creator: {
-            type: String,
-            required: true
-        },
         task: {
             type: String,
             required:true,
         },
+        author: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+            required: true,
+        }
     }
 );
 

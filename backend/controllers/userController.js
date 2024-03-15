@@ -6,7 +6,7 @@ import auth from "../middleware/auth.js";
 
 export const createUser = async (req, res) => {
     try {
-        if (!req.body.password || !req.body.name) {
+        if (!req.body.password || !req.body.name || !req.body.username || !req.body.email) {
             return res.status(400).send({
             message: 'Send all required fields: username, password'
             })
@@ -16,7 +16,9 @@ export const createUser = async (req, res) => {
 
         const newUser = {
             password: hashedPassword,
-            name: req.body.name
+            name: req.body.name,
+            email: req.body.email,
+            username: req.body.username
         };
         const user = await User.create(newUser);
 
@@ -36,7 +38,7 @@ export const createUser = async (req, res) => {
 }
 
 export const loginUser = async (req, res) => {
-    const user = await User.findOne({ name: req.body.name})
+    const user = await User.findOne({ username: req.body.username})
     if (user == null) {
         return res.status(400).send("Cannot Find User")
     }
