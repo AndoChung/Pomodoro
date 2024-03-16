@@ -2,7 +2,6 @@ import { User } from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { JWTSecret } from '../config.js';
-import auth from "../middleware/auth.js";
 
 export const createUser = async (req, res) => {
     try {
