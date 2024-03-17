@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from 'react'
-import ToDoList from '../components/ToDoList/ToDoList'
-import Timer from '../components/Timer/Timer'
+import ToDoList from '../components/HomeComponents/ToDoList/ToDoList'
+import Timer from '../components/HomeComponents/Timer/Timer'
 
 const Home = () => {
   return (
