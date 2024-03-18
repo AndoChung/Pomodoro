@@ -1,7 +1,9 @@
 import { React, useState} from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+    const navigate = useNavigate();
     const [ userData, setUserData ] = useState({
         name: "",
         email: "",
@@ -12,11 +14,11 @@ const Register = () => {
     const registerUser = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("/user/register", userData)
-        } catch {
-
+            await axios.post("/user/register", userData);
+            navigate("/");
+        } catch (error) {
+            console.log(error)
         }
-        console.log(userData)
     }
     return (
     <div className='h-screen'>
