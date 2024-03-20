@@ -41,9 +41,11 @@ export const loginUser = async (req, res) => {
     if (user == null) {
         return res.status(400).send("Cannot Find User")
     }
-    console.log(user);
     try {
-
+        const validLogin = await bcrypt.compare(req.body.password, user.password)
+        if (!validLogin) {
+            return res.status(400).send("Wrong Password")
+        }
         const token = jwt.sign({ user: user._id}, JWTSecret);
 
         res
@@ -51,12 +53,6 @@ export const loginUser = async (req, res) => {
                 httpOnly: true,
             })
             .send() 
-
-        if (await bcrypt.compare(req.body.password, user.password)) {
-            res.send("Success")
-        } else {
-            res.send("Not Allowed")
-        }
     } catch (error) {
         console.log(error)
     }

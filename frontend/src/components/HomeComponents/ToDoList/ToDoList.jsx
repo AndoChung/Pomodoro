@@ -5,16 +5,16 @@ import axios from 'axios';
 
 const ToDoList = () => {
   const [goals, setGoals] = useState([]);
-  useEffect(() => {
-    axios
-      .get('http://localhost:3001/user')
-      .then((res) => {
-        setGoals(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-  }, [])
+  // useEffect(() => {
+  //   axios
+  //     .get('http://localhost:3001/user')
+  //     .then((res) => {
+  //       setGoals(res);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     })
+  // }, [])
 
 
   return (
