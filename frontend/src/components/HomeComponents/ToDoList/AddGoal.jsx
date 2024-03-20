@@ -6,7 +6,6 @@ const AddGoal = ({ updateGoals }) => {
     const [taskMessage, setTaskMessage] = useState("")
     const addGoal = async (e) => {
         e.preventDefault()
-        console.log(taskMessage)
         await axios.post("/goal", {task: taskMessage})
         closeForm()
         updateGoals()

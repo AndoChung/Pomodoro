@@ -3,7 +3,7 @@ import { JWTSecret } from "../config.js";
 
 const auth = async (req, res, next) => {
     try {
-        const token =req.headers.cookie.split("=")[1];
+        const token = req.headers.cookie.split("=")[1];
         if (!token) {
             res.status(401).json({ errorMessage: "Unauth" });
         }

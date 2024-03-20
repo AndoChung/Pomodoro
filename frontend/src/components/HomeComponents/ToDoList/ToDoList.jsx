@@ -2,16 +2,18 @@ import { React, useEffect, useState } from 'react'
 import ToDo from './ToDo'
 import AddGoal from './AddGoal';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom';
 
 const ToDoList = () => {
+	const navigate = useNavigate();
 	const [goals, setGoals] = useState([]);
 
 	const getGoals = async () => {
 		try {
 			const response = await axios.get("/goal")
 			setGoals(response.data)
-		} catch {
+		} catch (error) {
+			navigate("/login")
 			console.log(error)
 		}
 	}
