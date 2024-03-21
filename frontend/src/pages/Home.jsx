@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import ToDoList from '../components/HomeComponents/ToDoList/ToDoList'
 import Timer from '../components/HomeComponents/Timer/Timer'
+import Logout from '../components/LogoutComponents/Logout'
 
 const Home = () => {
   return (
@@ -8,6 +9,9 @@ const Home = () => {
       <div className='flex h-5/6'>
         <ToDoList />
         <Timer amountOfTime="25" />
+      </div>
+      <div>
+        <Logout />
       </div>
     </div>
   )
