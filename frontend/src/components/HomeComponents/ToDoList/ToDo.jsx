@@ -1,5 +1,6 @@
 import { React, useState } from 'react'
 import axios from 'axios'
+import UpdateGoal from './UpdateGoal'
 
 const ToDo = ({ goal, id, updateGoals }) => {
     const deleteGoal = async (e) => {
@@ -24,6 +25,7 @@ const ToDo = ({ goal, id, updateGoals }) => {
                     <div>
                         <div>
                             <button onClick={deleteGoal}>X</button>
+                            <UpdateGoal id={ id } updateGoals={updateGoals} />
                         </div>
                     </div>
                 </div>

@@ -1,12 +1,12 @@
 import {React , useState} from 'react'
 import axios from 'axios'
 
-const AddGoal = ({ updateGoals }) => {
+const UpdateGoal = ({ id, updateGoals }) => {
     const [formDisplay, setFormDisplay] = useState({display: "none"});
     const [taskMessage, setTaskMessage] = useState("")
     const addGoal = async (e) => {
         e.preventDefault()
-        await axios.post("/goal", {task: taskMessage})
+        await axios.put(`/goal/${id}`, {task: taskMessage})
         closeForm()
         updateGoals()
         setTaskMessage("")
@@ -23,16 +23,16 @@ const AddGoal = ({ updateGoals }) => {
     return (
         <div>
             <div>
-                <button onClick={openForm}>Add a Goal</button>
+                <button onClick={openForm}>Update</button>
             </div>
             <div>
                 <form style={formDisplay}>
-                    <h4>Add a Goal</h4>
+                    <h4>Update Goal</h4>
                     <label>Task</label>
                     <input type='text' name='task' value={taskMessage} onChange={(e) => {
                         setTaskMessage(e.target.value)
                     }} />
-                    <button onClick={addGoal}>Add Goal</button>
+                    <button onClick={addGoal}>Update</button>
                     <button onClick={closeForm}>Close</button>
                 </form>
             </div>
@@ -40,4 +40,4 @@ const AddGoal = ({ updateGoals }) => {
     )
 }
 
-export default AddGoal
+export default UpdateGoal
