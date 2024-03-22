@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 const Logout = () => {
     const navigate = useNavigate();
     const logoutUser = async (e) => {
-        console.log("I love glo")
         e.preventDefault();
             try {
                 await axios.get("/user/logout");
