@@ -43,7 +43,7 @@ export const updateGoal = async (req, res) => {
             return res.status(404).json({ message: "Goal not found"});
             
         }
-        return res.status(400).send({ message: "Goal Updated Successfully"})
+        return res.status(200).send({ message: "Goal Updated Successfully"})
     
     } catch (error) {
         console.log(error.message);
@@ -61,7 +61,7 @@ export const deleteGoal = async (req, res) => {
             return res.status(404).json({ message: "Goal not found"})
         }
         
-        return res.status(400).send({ message: "Goal Successfully Deleted"})
+        return res.status(200).send({ message: "Goal Successfully Deleted"})
     } catch (error) {
         console.log(error.message);
         res.status(500).send({ messsge: error.message });

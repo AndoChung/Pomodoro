@@ -31,7 +31,7 @@ const ToDoList = () => {
 			</div>
 			<div className=''>
 				{goals.map((goal, i) => (
-					<ToDo goal={goal.task} key={i} />
+					<ToDo goal={goal.task} key={i} id={goal._id} updateGoals={getGoals} />
 				))}
 			</div>
 		</div>
