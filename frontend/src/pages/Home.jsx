@@ -8,7 +8,7 @@ const Home = () => {
     <div className='h-screen'>
       <div className='flex h-5/6'>
         <ToDoList />
-        <Timer amountOfTime="40" />
+        <Timer amountOfTime="1" />
       </div>
       <div>
         <Logout />
