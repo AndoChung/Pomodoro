@@ -2,25 +2,36 @@ import { React, useState, useEffect } from 'react'
 import moment from "moment"
 
 
-const Timer = ({ amountOfTime }) => {
+const Timer = () => {
     const [isCounting, setIsCounting] = useState(false)
-    const durationNum = Number(amountOfTime)
-    let duration = moment.duration(durationNum, "minutes")
+    const [durationLength, setDurationLength] = useState(25)
+    const [duration, setDuration] = useState(moment.duration(durationLength, "minutes"))
     const [display, setDisplay] = useState(moment.utc(duration.as("milliseconds")).format("mm:ss"))
     useEffect(() => {
         if (isCounting) {
             let interval = setInterval(() => {
                 duration.subtract(1000, "milliseconds");
                 setDisplay(moment.utc(duration.as("milliseconds")).format("mm:ss"));
-                if (duration.asMilliseconds() === 0) {
-                    clearInterval(interval);
+                if (duration.asMilliseconds() === 0 && durationLength === 25) {
+                    setIsCounting(false);
+                    let newLength = 5
+                    setDurationLength(newLength)
+                    setDuration(moment.duration(newLength,"minutes"));
+                    setDisplay(moment.utc(moment.duration(newLength, "minutes").as("milliseconds")).format("mm:ss"))
                 }
-            }, 1000)
+                if (duration.asMilliseconds() === 0 && durationLength === 5) {
+                    setIsCounting(false);
+                    let newLength = 25
+                    setDurationLength(newLength)
+                    setDuration(moment.duration(newLength,"minutes"));
+                    setDisplay(moment.utc(moment.duration(newLength, "minutes").as("milliseconds")).format("mm:ss"))
+                }
+            }, 1)
             return () => {
                 clearInterval(interval);
             }
         }
-    }, [isCounting])
+    }, [isCounting, durationLength, duration, display])
 
 
     const startTimer = () => {
@@ -35,16 +46,3 @@ const Timer = ({ amountOfTime }) => {
     )
 }
 export default Timer
-
-// useEffect(() => {
-//     let interval = setInterval(() => {
-//         duration.subtract(1000, "milliseconds");
-//         setDisplay(moment.utc(duration.as("milliseconds")).format("mm:ss"));
-//         if (duration.asMilliseconds() === 0) {
-//             clearInterval(interval);
-//         }
-//     }, 1000)
-//     return () => {
-//         clearInterval(interval);
-//     }
-// }, [])
