@@ -1,7 +1,6 @@
 import { React, useState } from 'react'
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import loginIMG from 
 
 
 const Login = () => {
@@ -58,9 +57,9 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <div className='w-1/2 bg-red-900 h-full'>
+            <div className='w-1/2 bg-brand-tan h-full'>
                 <div className=''>
-                    <img src='' />
+                    <img src='/images/LoginIMG.jpg' />
                 </div>
             </div>
         </div>

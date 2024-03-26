@@ -7,7 +7,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {"brand-tan": "#f3e6dd"}
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 }
