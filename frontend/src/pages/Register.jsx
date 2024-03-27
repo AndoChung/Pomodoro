@@ -28,30 +28,42 @@ const Register = () => {
                 </div>
             </div>
             <div className='w-1/2 flex flex-col justify-center'>
-                <div className='flex justify-center m-32 flex-col h-1/2'>
-                    <h1 className='text-5xl h-16'>Login</h1>
+                <div className='flex justify-center mx-32 flex-col h-4/5'>
+                    <h1 className='text-5xl h-16'>Register</h1>
                     <div className='h-14'>
                         <p>See your progress and track your goals!</p>
                     </div>
-                    <form onSubmit={registerUser} className='flex flex-col justify-center items-center w-1/4'>
-                        <div className='h-1/2 border flex flex-col justify-center items-center w-full'>
-                            <label>Name</label>
-                            <input type='text' value={userData.name} onChange={(e) => {
-                                setUserData({ ...userData, name: e.target.value })
-                            }} className='w-5/6' />
-                            <label>Email</label>
-                            <input type='email' value={userData.email} onChange={(e) => {
-                                setUserData({ ...userData, email: e.target.value })
-                            }} className='w-5/6' />
-                            <label>Username</label>
-                            <input type='text' value={userData.username} onChange={(e) => {
-                                setUserData({ ...userData, username: e.target.value })
-                            }} className='w-5/6' />
-                            <label>Password</label>
-                            <input type='password' value={userData.password} onChange={(e) => {
-                                setUserData({ ...userData, password: e.target.value })
-                            }} className='w-5/6' />
-                            <input type='submit' value="Submit" className='border border-black mt-2' />
+                    <form onSubmit={registerUser} className='flex flex-col items-center'>
+                        <div className='h-1/2 flex flex-col justify-center items-center w-full'>
+                            <div className='flex flex-col justify-between w-full h-full'>
+                                <div>
+                                    <label>Name</label>
+                                    <input placeholder='ex. Gloria Lee' type='text' value={userData.name} onChange={(e) => {
+                                        setUserData({ ...userData, name: e.target.value })
+                                    }} className='w-full h-12' />
+                                </div>
+                                <div>
+                                    <label>Email</label>
+                                    <input placeholder='Email' type='email' value={userData.email} onChange={(e) => {
+                                        setUserData({ ...userData, email: e.target.value })
+                                    }} className='w-full h-12' />
+                                </div>
+                                <div>
+                                    <label>Username</label>
+                                    <input placeholder='Username' type='text' value={userData.username} onChange={(e) => {
+                                        setUserData({ ...userData, username: e.target.value })
+                                    }} className='w-full h-12' />
+                                </div>
+                                <div>
+                                    <label>Password</label>
+                                    <input placeholder='Password' type='password' value={userData.password} onChange={(e) => {
+                                        setUserData({ ...userData, password: e.target.value })
+                                    }} className='w-full h-12' />
+                                </div>
+                                <div>
+                                    <input type='submit' value="Submit" className='h-12 border border-black mt-2 w-full' />
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>
