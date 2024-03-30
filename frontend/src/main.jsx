@@ -7,7 +7,7 @@ import Register from './pages/Register'
 import './index.css'
 import axios from 'axios';
 
-axios.defaults.baseURL = "http://localhost:3001";
+axios.defaults.baseURL = "https://pomodoro-3v2v.onrender.com/";
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
