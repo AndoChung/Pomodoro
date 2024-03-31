@@ -11,7 +11,7 @@ import goalRoutes from "./routes/goalRoutes.js";
 const app = express();
 
 app.use(cors({
-    origin: 'https://pomodoro-kdu4.onrender.com/',
+    origin: 'https://pomodoro-3v2v.onrender.com/',
     methods: ['GET','POST','PUT','DELETE'],
     credentials: true,
     allowedHeaders: ['Content-Type']
