@@ -8,10 +8,10 @@ import './index.css'
 import axios from 'axios';
 
 // For Production
-axios.defaults.baseURL = "https://pomodoro-3v2v.onrender.com";
+//axios.defaults.baseURL = "https://pomodoro-3v2v.onrender.com";
 
 // For Development
-//axios.defaults.baseURL = "http://localhost:3001"
+axios.defaults.baseURL = "http://localhost:3001"
 axios.defaults.withCredentials = true;
 
 const router = createBrowserRouter([
