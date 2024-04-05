@@ -8,7 +8,7 @@ import './index.css'
 import axios from 'axios';
 
 // For Production
-axios.defaults.baseURL = "https://pomodoro-api-m9tr.onrender.com/";
+axios.defaults.baseURL = "https://pomodoro-api-m9tr.onrender.com";
 
 // For Development
 //axios.defaults.baseURL = "http://localhost:3001"

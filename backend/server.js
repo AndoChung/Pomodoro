@@ -12,7 +12,7 @@ const app = express();
 
 app.use(cors({
     // For Production
-    origin: 'https://pomodoro-two-liart.vercel.app/',
+    origin: 'https://pomodoro-two-liart.vercel.app',
 
     // For Development
     // origin: 'http://localhost:5173',
