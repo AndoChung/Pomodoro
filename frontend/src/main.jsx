@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createHashRouter, RouterProvider } from "react-router-dom";
 import Home from './pages/Home'
 import Login from './pages/Login'
 import Register from './pages/Register'
@@ -14,7 +14,7 @@ axios.defaults.baseURL = "https://pomodoro-api-m9tr.onrender.com/";
 //axios.defaults.baseURL = "http://localhost:3001"
 axios.defaults.withCredentials = true;
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <Home />
