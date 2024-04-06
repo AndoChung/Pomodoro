@@ -53,6 +53,8 @@ export const loginUser = async (req, res) => {
         res
             .cookie("token", token, {
                 httpOnly: true,
+                sameSite: 'none',
+                secure: true
             })
             .send() 
     } catch (error) {
@@ -64,6 +66,8 @@ export const logoutUser = (req, res) => {
     res
         .cookie("token", "", {
             httpOnly:true,
+            sameSite: 'none',
+            secure: true,
             expires: new Date(0)
         })
         .send();
