@@ -26,40 +26,40 @@ const Login = () => {
     }
 
     return (
-        <div className='h-screen flex w-screen'>
-            <div className='w-1/2 flex flex-col justify-center'>
-                <div className='flex justify-center mx-32 flex-col h-1/2'>
-                    <h1 className='text-5xl h-16'>Login</h1>
-                    <div className='h-14'>
+        <div className='h-full flex w-screen md-height:h-screen'>
+            <div className='w-full flex flex-col justify-center bg-brand-tan md:w-1/2 h-full'>
+                <div className='flex justify-center mx-16 flex-col lg:mx-32'>
+                    <h1 className='text-5xl h-16 pt-8 mb-10'>Login</h1>
+                    <div className='h-14 mb-1'>
                         <p>See your progress and track your goals!</p>
                     </div>
                     <form onSubmit={loginUser} className='flex flex-col items-center'>
                         <div className='flex flex-col justify-between w-full h-full'>
                             <div>
-                                <label>Username*</label>
+                                <label>Username<span className='text-brand-scarlet'>*</span></label>
                                 <input placeholder='Username' type='text' value={userData.username} onChange={(e) => {
                                     setUserData({ ...userData, username: e.target.value })
-                                }} className='w-full h-12' />
+                                }} className='w-full h-12 bg-brand-pale mb-2' />
                             </div>
                             <div>
-                                <label>Password*</label>
+                                <label>Password<span className='text-brand-scarlet'>*</span></label>
                                 <input placeholder='Password' type='password' value={userData.password} onChange={(e) => {
                                     setUserData({ ...userData, password: e.target.value })
-                                }} className='w-full h-12' />
+                                }} className='w-full h-12 bg-brand-pale mb-2' />
                             </div>
                             <div>
-                                <input type='submit' value="Login" className='h-12 border border-black mt-2 w-full' />
+                                <input type='submit' value="Login" className='h-12 border border-black my-2 w-full bg-brand-scarlet' />
                             </div>
                         </div>
                     </form>
-                    <div className='mt-4'>
-                        <p>First Time Here? <span><button onClick={navigateRegister}>Register Here</button></span></p>
+                    <div className='my-4 pb-10'>
+                        <p>First Time Here? <span><button className='text-brand-scarlet' onClick={navigateRegister}>Register Here</button></span></p>
                     </div>
                 </div>
             </div>
-            <div className='w-1/2 bg-brand-tan h-full'>
-                <div className=''>
-                    <img src='/images/LoginIMG.jpg' />
+            <div className='hidden md:block w-1/2 h-full'>
+                <div className='h-full flex overflow-clip'>
+                    <img src='/images/LoginIMG.jpg' className='self-center overflow-clip'/>
                 </div>
             </div>
         </div>
