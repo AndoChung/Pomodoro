@@ -9,6 +9,7 @@ export default {
   theme: {
     screens: {
       'md-height': { 'raw': '(min-height: 450px)' },
+      'lg-height': { 'raw': '(min-height: 600px)' },
 
       'sm': '640px',
 
@@ -25,8 +26,8 @@ export default {
         "brand-tan": "#f3e6dd",
         "brand-pale": "#f8f1eb",
         "brand-olive": "#8b865c",
-        "brand-scarlet": "#d87355"
-
+        "brand-scarlet": "#d87355",
+        "button-red": "#FF6536"
       }
     },
   },

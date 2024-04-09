@@ -48,16 +48,16 @@ const Login = () => {
                                 }} className='w-full h-12 bg-brand-pale mb-2' />
                             </div>
                             <div>
-                                <input type='submit' value="Login" className='h-12 border border-black my-2 w-full bg-brand-scarlet' />
+                                <input type='submit' value="Login" className='h-12 border border-black my-10 w-full bg-brand-scarlet cursor-pointer active:bg-button-red' />
                             </div>
                         </div>
                     </form>
                     <div className='my-4 pb-10'>
-                        <p>First Time Here? <span><button className='text-brand-scarlet' onClick={navigateRegister}>Register Here</button></span></p>
+                        <p>First Time Here? <span><button className='text-brand-scarlet active:text-button-red' onClick={navigateRegister}>Register Here</button></span></p>
                     </div>
                 </div>
             </div>
-            <div className='hidden md:block w-1/2 h-full'>
+            <div className='hidden md:block w-1/2'>
                 <div className='h-full flex overflow-clip'>
                     <img src='/images/LoginIMG.jpg' className='self-center overflow-clip'/>
                 </div>
